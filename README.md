@@ -3,6 +3,7 @@
 ## Objetivo
 
 - [Sessões Escolhidas do Projeto](https://tcdmodules.vercel.app/v14.1?state=34341063)
+- [Initial Figma](https://www.figma.com/design/0QqbBQfDFr7xsR6Z1BQ3iX/trancendence-poke?node-id=0-1&t=mro9uy9PyI9rkcJu-1)
 
 ## Material de Aprendizado
 
