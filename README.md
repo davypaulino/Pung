@@ -1,5 +1,17 @@
 # A Pong Game
 
+## Como rodar
+
+> [!WARNING] Atenção
+> - Verificar se as pastas de volumes do docker compose para o banco de dados estão criadas.
+> - Verificar o arquivo .env
+> - Verificar se o git submodules funcionou
+> - Aplicar migrations
+
+```
+make
+```
+
 ## Objetivo
 
 - [Sessões Escolhidas do Projeto](https://tcdmodules.vercel.app/v14.1?state=34341063)
