@@ -8,8 +8,13 @@
 > - Verificar se o git submodules funcionou
 > - Aplicar migrations
 
-```
+```sh
 make
+```
+
+Reiniciar containers
+```sh
+make att
 ```
 
 ## Objetivo
