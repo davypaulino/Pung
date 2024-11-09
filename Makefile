@@ -1,6 +1,9 @@
 STORAGE_GAME=storage/game-data
 STORAGE_USER=storage/user-data
-all: create-dirs submodule run-compose
+
+build: create-dirs submodule
+
+all: run-compose
 
 run-compose:
 	docker compose up
