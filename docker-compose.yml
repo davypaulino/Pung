@@ -20,6 +20,22 @@ services:
     secrets:
       - secrets_env
 
+  user-session-migrate:
+    image: python:3.11
+    container_name: user-session-migrate
+    command: sh -c "pip install -r requirements.txt && python manage.py migrate"
+    working_dir: /app
+    environment:
+      DB_NAME: "${USER_SESSION_POSTGRES_DB}"
+      DB_USER: "${USER_SESSION_POSTGRES_USER}"
+      DB_PASSWORD: "${USER_SESSION_POSTGRES_PASSWORD}"
+      DB_HOST: "db-user-session"
+      DB_PORT: "5432"
+    volumes:
+      - user-session-dev:/app
+    depends_on: 
+      - db-user
+
   user-session:
     image: python:3.11
     container_name: user-session
@@ -35,7 +51,8 @@ services:
       DB_PASSWORD: "${USER_SESSION_POSTGRES_PASSWORD}"
       DB_HOST: "db-user-session"
       DB_PORT: "5432"
-    depends_on: 
+    depends_on:
+      - user-session-migrate
       - db-user
 
   db-game:
