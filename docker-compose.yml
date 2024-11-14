@@ -39,7 +39,7 @@ services:
   user-session:
     image: python:3.11
     container_name: user-session
-    command: sh -c "pip install -r requirements.txt && python manage.py runserver 0.0.0.0:8002"
+    command: sh -c "pip install -r requirements.txt && uvicorn session.asgi:application --host 0.0.0.0 --port 8002 --reload"
     working_dir: /app
     volumes:
       - user-session-dev:/app
@@ -51,9 +51,11 @@ services:
       DB_PASSWORD: "${USER_SESSION_POSTGRES_PASSWORD}"
       DB_HOST: "db-user-session"
       DB_PORT: "5432"
+      REDIS_URL: "redis://redis:6379/1"
     depends_on:
       - user-session-migrate
       - db-user
+      - redis
 
   db-game:
     image: postgres
@@ -103,6 +105,11 @@ services:
     depends_on:
       - game-core
       - user-session
+  
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
 
 volumes:
   game-core-dev:
