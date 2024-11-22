@@ -21,3 +21,8 @@ venv:
 submodule:
 	git submodule init
 	git submodule update
+
+clean:
+	docker compose down
+	docker volume prune -a -f
+	sudo rm -rf $(STORAGE_GAME) $(STORAGE_USER)

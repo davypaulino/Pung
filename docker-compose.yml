@@ -62,13 +62,12 @@ services:
     container_name: db-game-core
     restart: always
     ports:
-       - 5433:5433
+       - 5433:5432
     shm_size: 128mb
     environment:
       POSTGRES_USER: "${CORE_GAME_POSTGRES_USER}"
       POSTGRES_PASSWORD: "${CORE_GAME_POSTGRES_PASSWORD}"
       POSTGRES_DB: "${CORE_GAME_POSTGRES_DB}"
-      POSTGRES_PORT: "5433"
     volumes:
       - game-db-data:/var/lib/postgresql/data
     secrets:
@@ -89,8 +88,28 @@ services:
       DB_PASSWORD: "${CORE_GAME_POSTGRES_PASSWORD}"
       DB_HOST: "db-game-core"
       DB_PORT: "5433"
+      REDIS_HOST: "redis"
+      REDIS_PORT: "6379"
     depends_on:
       - db-game
+
+  # game-worker:
+  #   image: python:3.11
+  #   container_name: game-worker
+  #   command: sh -c "pip install -r requirements.txt && python manage.py game"
+  #   working_dir: /app
+  #   volumes:
+  #     - game-worker-dev:/app
+  #   environment:
+  #     DB_NAME: "${CORE_GAME_POSTGRES_DB}"
+  #     DB_USER: "${CORE_GAME_POSTGRES_USER}"
+  #     DB_PASSWORD: "${CORE_GAME_POSTGRES_PASSWORD}"
+  #     DB_HOST: "db-game-core"
+  #     DB_PORT: "5433"
+  #     REDIS_HOST: "redis"
+  #     REDIS_PORT: "6379"
+  #   depends_on:
+  #     - game-core
 
   nginx:
     build:
@@ -118,7 +137,15 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: ./Game-Core/src
+      device: ./Game-Core/src/api
+
+  # game-worker-dev:
+  #   name: game-worker-dev
+  #   driver: local
+  #   driver_opts:
+  #     o: bind
+  #     type: none
+  #     device: ./Game-Core/src/workers/game_worker
 
   user-session-dev:
     name: user-session-dev
