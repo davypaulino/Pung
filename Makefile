@@ -1,7 +1,7 @@
 STORAGE_GAME=storage/game-data
 STORAGE_USER=storage/user-data
 
-all: create-dirs submodule run-compose
+all: create-dirs run-compose
 
 att: run-compose
 

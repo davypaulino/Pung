@@ -76,7 +76,7 @@ services:
   game-core:
     image: python:3.11
     container_name: game-core
-    command: sh -c "pip install -r requirements.txt && uvicorn coreGame.asgi:application --host 0.0.0.0 --port 8001 --reload"
+    command: sh -c "pip install -r requirements.txt && uvicorn game_project.asgi:application --host 0.0.0.0 --port 8001 --reload"
     working_dir: /app
     volumes:
       - game-core-dev:/app
@@ -87,7 +87,7 @@ services:
       DB_USER: "${CORE_GAME_POSTGRES_USER}"
       DB_PASSWORD: "${CORE_GAME_POSTGRES_PASSWORD}"
       DB_HOST: "db-game-core"
-      DB_PORT: "5433"
+      DB_PORT: "5432"
       REDIS_HOST: "redis"
       REDIS_PORT: "6379"
     depends_on:
@@ -137,7 +137,7 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: ./Game-Core/src/api
+      device: ./Game-Core/src
 
   # game-worker-dev:
   #   name: game-worker-dev
