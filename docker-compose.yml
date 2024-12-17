@@ -58,6 +58,25 @@ services:
       - db-user
       - redis
 
+  game-sync-session-worker:
+    image: python:3.11
+    container_name: game-sync-session-worker
+    command: sh -c "pip install -r requirements.txt && python manage.py game_integration"
+    working_dir: /app
+    volumes:
+      - user-session-dev:/app
+    environment:
+      DB_NAME: "${USER_SESSION_POSTGRES_DB}"
+      DB_USER: "${USER_SESSION_POSTGRES_USER}"
+      DB_PASSWORD: "${USER_SESSION_POSTGRES_PASSWORD}"
+      DB_HOST: "db-user-session"
+      DB_PORT: "5432"
+      REDIS_HOST: "${REDIS_HOST}"
+      REDIS_PORT: "${REDIS_PORT}"
+    depends_on:
+      - user-session
+      - redis
+
   db-game:
     image: postgres
     container_name: db-game-core
