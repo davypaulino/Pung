@@ -26,3 +26,9 @@ clean:
 	docker compose down
 	docker volume prune -a -f
 	sudo rm -rf $(STORAGE_GAME) $(STORAGE_USER)
+
+w:
+	docker stop game-sync-session-worker
+	docker stop game-worker
+	docker start game-sync-session-worker
+	docker start game-worker
