@@ -1,6 +1,12 @@
 STORAGE_GAME=storage/game-data
 STORAGE_USER=storage/user-data
 
+VOLUMES :=		/goinfre/game-core-dev \
+				/goinfre/user-session-dev \
+				/goinfre/front-end-dev \
+				/goinfre/game-db-data \
+				/goinfre/user-db-data
+
 all: create-dirs run-compose
 
 att: run-compose
@@ -32,3 +38,16 @@ w:
 	docker stop game-worker
 	docker start game-sync-session-worker
 	docker start game-worker
+
+mkdir:
+	mkdir -p $(VOLUMES)
+
+fclean:
+	docker compose down
+	docker volume prune -a -f
+	sudo rm -rf $(VOLUMES)
+
+build: mkdir
+	docker compose up --build
+
+re: fclean build
