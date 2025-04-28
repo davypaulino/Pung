@@ -112,8 +112,8 @@ export default {
           "title": "Mais Sobre o Projeto",
           "items": [
             {
-              "label": "Updates",
-              "to": "/updates"
+              "label": "Atualizações",
+              "to": "/blog"
             },
             {
               "label": "GitHub",
