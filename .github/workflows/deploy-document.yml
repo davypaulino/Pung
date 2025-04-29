@@ -30,7 +30,7 @@ jobs:
           && pandoc -s \
           -F pandoc_abnt \
           -F pandoc-citeproc \
-          --bibliography=bibliografia.bib \
+          --bibliography=docs/bibliografia.bib \
           --csl \
           .github/workflows/abnt/abnt.csl \
           --template \
