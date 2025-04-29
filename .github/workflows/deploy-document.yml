@@ -1,6 +1,6 @@
 on:
   push:
-    branches:
+    tags:
       - "*"
 
 name: Markdown para PDF ABNT
@@ -44,6 +44,8 @@ jobs:
           ../../.github/workflows/abnt/referencias.md \
           -o ../../${{ github.event.repository.name }}.pdf \
           --pdf-engine=xelatex
+      - name: Voltando ao diretório padrão
+        run: cd $GITHUB_WORKSPACE
       - name: Criando a versão
         id: create_release
         uses: actions/create-release@v1
