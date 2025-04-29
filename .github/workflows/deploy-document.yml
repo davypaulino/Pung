@@ -33,11 +33,11 @@ jobs:
           -F pandoc-citeproc \
           --bibliography=bibliografia.bib \
           --csl \
-          .github/workflows/abnt/abnt.csl \
+          /.github/workflows/abnt/abnt.csl \
           --template \
-          .github/workflows/abnt-pandoc.latex \
+          /.github/workflows/abnt-pandoc.latex \
           *.md \
-          .github/workflows/abnt/referencias.md \
+          /.github/workflows/abnt/referencias.md \
           -o ${{ github.event.repository.name }}.pdf \
           --pdf-engine=xelatex
       - name: Criando a versão
