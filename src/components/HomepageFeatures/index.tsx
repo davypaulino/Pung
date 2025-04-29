@@ -11,33 +11,38 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: '🌄 Backend',
+    Svg: require('@site/static/img/back.svg').default,
     description: (
-      <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </>
+      <ul className={styles.list}>
+        <li>🌐 <strong>Linguagens:</strong> Django e .Net</li>
+        <li>🐳 <strong>Build:</strong> Docker</li>
+        <li>🔧 <strong>Ferramentas:</strong> Git, Make e Github Codespace</li>
+      </ul>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: '🌳 Frontend',
+    Svg: require('@site/static/img/front.svg').default,
     description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
+      <ul className={styles.list}>
+        <li>⚡ <strong>Linguagem:</strong> React com Next.js</li>
+        <li>🎨 <strong>Estilo:</strong> Tailwind CSS</li>
+        <li>🐳 <strong>Build:</strong> Docker</li>
+        <li>🛠️ <strong>Ferramentas:</strong> Git, Github Codespace e Make</li>
+      </ul>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: '⚙️ Infraestrutura',
+    Svg: require('@site/static/img/infra.svg').default,
     description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
+      <ul className={styles.list}>
+        <li>💬 <strong>Mensageria e Cache:</strong> Redis</li>
+        <li>🗄️ <strong>Banco de Dados:</strong> PostgreSQL</li>
+        <li>🌀 <strong>Proxy e Loadbalance:</strong> Nginx</li>
+        <li>🐳 <strong>Orquestração de Containers:</strong> Docker Compose</li>
+      </ul>
     ),
   },
 ];

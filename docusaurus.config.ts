@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Pung Game Project',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Jogo Pong multiplayer desenvolvido em arquitetura de microserviços',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -72,7 +72,7 @@ const config: Config = {
     navbar: {
       title: 'Pung Game',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Pung Game Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -80,7 +80,7 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Arquitetura',
+          label: 'Documentação',
         },
         {to: '/blog', label: 'Atualizações', position: 'left'},
         {
@@ -97,7 +97,7 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Arquitetura',
+              label: 'Documentação',
               to: '/docs/intro',
             },
           ],

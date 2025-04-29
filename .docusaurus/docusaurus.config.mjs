@@ -5,7 +5,7 @@
  */
 export default {
   "title": "Pung Game Project",
-  "tagline": "Dinosaurs are cool",
+  "tagline": "Jogo Pong multiplayer desenvolvido em arquitetura de microserviços",
   "favicon": "img/favicon.ico",
   "url": "https://your-docusaurus-site.example.com",
   "baseUrl": "/Pung/",
@@ -56,7 +56,7 @@ export default {
     "navbar": {
       "title": "Pung Game",
       "logo": {
-        "alt": "My Site Logo",
+        "alt": "Pung Game Logo",
         "src": "img/logo.svg"
       },
       "items": [
@@ -64,7 +64,7 @@ export default {
           "type": "docSidebar",
           "sidebarId": "tutorialSidebar",
           "position": "left",
-          "label": "Arquitetura"
+          "label": "Documentação"
         },
         {
           "to": "/blog",
@@ -86,7 +86,7 @@ export default {
           "title": "Docs",
           "items": [
             {
-              "label": "Arquitetura",
+              "label": "Documentação",
               "to": "/docs/intro"
             }
           ]
