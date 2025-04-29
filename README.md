@@ -1,5 +1,6 @@
 
 [![Deploy to GitHub Pages](https://github.com/ThreeDP/Pung/actions/workflows/deploy.yml/badge.svg)](https://github.com/ThreeDP/Pung/actions/workflows/deploy.yml)
+[![Markdown para PDF ABNT](https://github.com/ThreeDP/Pung/actions/workflows/deploy-document.yml/badge.svg)](https://github.com/ThreeDP/Pung/actions/workflows/deploy-document.yml)
 
 # Website
 
