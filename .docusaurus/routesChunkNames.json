@@ -249,18 +249,22 @@
     },
     "content": "content---pung-markdown-page-393-a3f"
   },
-  "/Pung/docs-ac4": {
+  "/Pung/docs-683": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---pung-docsaba-2cd"
     }
   },
-  "/Pung/docs-653": {
+  "/Pung/docs-b82": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "__props": "__props---pung-docs-582-a2d"
   },
-  "/Pung/docs-581": {
+  "/Pung/docs-1a4": {
     "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/Pung/docs/category/documentação-academica-76a": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "__props": "__props---pung-docs-category-documentacao-academicaf-52-891"
   },
   "/Pung/docs/category/tutorial---basics-bf3": {
     "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
@@ -273,6 +277,18 @@
   "/Pung/docs/intro-f1d": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---pung-docs-intro-0-e-3-05b"
+  },
+  "/Pung/docs/projeto/cap1-2f9": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---pung-docs-projeto-cap-1299-a2d"
+  },
+  "/Pung/docs/projeto/considerações-finais-98c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---pung-docs-projeto-consideracoes-finaisbec-c5c"
+  },
+  "/Pung/docs/projeto/introdução-30d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---pung-docs-projeto-introducaodbd-c14"
   },
   "/Pung/docs/tutorial-basics/congratulations-cba": {
     "__comp": "__comp---theme-doc-item-178-a40",

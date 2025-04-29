@@ -114,16 +114,22 @@ export default [
   },
   {
     path: '/Pung/docs',
-    component: ComponentCreator('/Pung/docs', 'ac4'),
+    component: ComponentCreator('/Pung/docs', '683'),
     routes: [
       {
         path: '/Pung/docs',
-        component: ComponentCreator('/Pung/docs', '653'),
+        component: ComponentCreator('/Pung/docs', 'b82'),
         routes: [
           {
             path: '/Pung/docs',
-            component: ComponentCreator('/Pung/docs', '581'),
+            component: ComponentCreator('/Pung/docs', '1a4'),
             routes: [
+              {
+                path: '/Pung/docs/category/documentação-academica',
+                component: ComponentCreator('/Pung/docs/category/documentação-academica', '76a'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
               {
                 path: '/Pung/docs/category/tutorial---basics',
                 component: ComponentCreator('/Pung/docs/category/tutorial---basics', 'bf3'),
@@ -139,6 +145,24 @@ export default [
               {
                 path: '/Pung/docs/intro',
                 component: ComponentCreator('/Pung/docs/intro', 'f1d'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/Pung/docs/projeto/cap1',
+                component: ComponentCreator('/Pung/docs/projeto/cap1', '2f9'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/Pung/docs/projeto/considerações-finais',
+                component: ComponentCreator('/Pung/docs/projeto/considerações-finais', '98c'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/Pung/docs/projeto/introdução',
+                component: ComponentCreator('/Pung/docs/projeto/introdução', '30d'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
