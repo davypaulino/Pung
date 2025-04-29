@@ -8,6 +8,10 @@ jobs:
   build:
     name: Gerando PDF ABNT
     runs-on: ubuntu-latest
+    permissions: # 🔒 Adicionando permissões para o GITHUB_TOKEN
+      contents: write
+      issues: read
+      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v2
