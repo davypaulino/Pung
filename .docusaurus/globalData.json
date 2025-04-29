@@ -8,26 +8,11 @@
           "label": "Next",
           "isLast": true,
           "path": "/Pung/docs",
-          "mainDocId": "introdução",
+          "mainDocId": "intro",
           "docs": [
-            {
-              "id": "cap1",
-              "path": "/Pung/docs/cap1",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "considerações-finais",
-              "path": "/Pung/docs/considerações-finais",
-              "sidebar": "tutorialSidebar"
-            },
             {
               "id": "intro",
               "path": "/Pung/docs/intro",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "introdução",
-              "path": "/Pung/docs/introdução",
               "sidebar": "tutorialSidebar"
             },
             {
@@ -85,8 +70,8 @@
           "sidebars": {
             "tutorialSidebar": {
               "link": {
-                "path": "/Pung/docs/introdução",
-                "label": "introdução"
+                "path": "/Pung/docs/intro",
+                "label": "intro"
               }
             }
           }
