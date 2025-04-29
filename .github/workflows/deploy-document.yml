@@ -36,7 +36,7 @@ jobs:
           .github/workflows/abnt/abnt.csl \
           --template \
           .github/workflows/abnt/abnt-pandoc.latex \
-          docs/*.md \
+          *.md \
           .github/workflows/abnt/referencias.md \
           -o ${{ github.event.repository.name }}.pdf \
           --pdf-engine=xelatex
