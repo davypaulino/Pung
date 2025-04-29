@@ -114,16 +114,22 @@ export default [
   },
   {
     path: '/Pung/docs',
-    component: ComponentCreator('/Pung/docs', 'ac4'),
+    component: ComponentCreator('/Pung/docs', 'c7d'),
     routes: [
       {
         path: '/Pung/docs',
-        component: ComponentCreator('/Pung/docs', '653'),
+        component: ComponentCreator('/Pung/docs', '525'),
         routes: [
           {
             path: '/Pung/docs',
-            component: ComponentCreator('/Pung/docs', '581'),
+            component: ComponentCreator('/Pung/docs', 'c3d'),
             routes: [
+              {
+                path: '/Pung/docs/cap1',
+                component: ComponentCreator('/Pung/docs/cap1', '2f0'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
               {
                 path: '/Pung/docs/category/tutorial---basics',
                 component: ComponentCreator('/Pung/docs/category/tutorial---basics', 'bf3'),
@@ -137,8 +143,20 @@ export default [
                 sidebar: "tutorialSidebar"
               },
               {
+                path: '/Pung/docs/considerações-finais',
+                component: ComponentCreator('/Pung/docs/considerações-finais', 'b89'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
                 path: '/Pung/docs/intro',
                 component: ComponentCreator('/Pung/docs/intro', 'f1d'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/Pung/docs/introdução',
+                component: ComponentCreator('/Pung/docs/introdução', '596'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
