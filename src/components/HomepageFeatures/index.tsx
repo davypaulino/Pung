@@ -5,14 +5,14 @@ import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  Icon: string;
   description: ReactNode;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: '🌄 Backend',
-    Svg: require('@site/static/img/back.svg').default,
+    title: 'Backend',
+    Icon: '⚙️',
     description: (
       <ul className={styles.list}>
         <li>🌐 <strong>Linguagens:</strong> Django e .Net</li>
@@ -22,8 +22,8 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: '🌳 Frontend',
-    Svg: require('@site/static/img/front.svg').default,
+    title: 'Frontend',
+    Icon: '🌄',
     description: (
       <ul className={styles.list}>
         <li>⚡ <strong>Linguagem:</strong> React com Next.js</li>
@@ -34,8 +34,8 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: '⚙️ Infraestrutura',
-    Svg: require('@site/static/img/infra.svg').default,
+    title: 'Infraestrutura',
+    Icon: '🏗️',
     description: (
       <ul className={styles.list}>
         <li>💬 <strong>Mensageria e Cache:</strong> Redis</li>
@@ -47,15 +47,15 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, Icon, description}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <p style={{ fontSize: '4rem',  marginBottom: '0' }}>{Icon}</p>
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+        {description}
       </div>
     </div>
   );
