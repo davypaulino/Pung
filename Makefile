@@ -1,5 +1,6 @@
 VOLUMES :=		~/goinfre/storage/game-data \
-				~/goinfre/storage/user-data
+				~/goinfre/storage/user-data \
+				~/goinfre/storage/pung-data
 
 all: create-dirs run-compose
 

@@ -5,6 +5,33 @@ secrets:
 
 services:
 
+  pung-db:
+    build:
+      context: ./database/
+      dockerfile: ./Dockerfile
+    image: pung-db:latest
+    container_name: pung-db
+    restart: always
+    shm_size: 128mb
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      GAME_CORE_DB: "${GAME_CORE_DB}"
+      GAME_CORE_DB_USER: "${GAME_CORE_DB_USER}"
+      GAME_CORE_DB_PASS: "${GAME_CORE_DB_PASS}"
+      GUARDIAN_DB: "${GUARDIAN_DB}"
+      GUARDIAN_DB_USER: "${GUARDIAN_DB_USER}"
+      GUARDIAN_DB_PASS: "${GUARDIAN_DB_PASS}"
+      USER_SESSION_DB: "${USER_SESSION_DB}"
+      USER_SESSION_DB_USER: "${USER_SESSION_DB_USER}" 
+      USER_SESSION_DB_PASS: "${USER_SESSION_DB_PASS}"
+    volumes:
+      - pung-db-data:/var/lib/postgresql/data
+    secrets:
+      - secrets_env
+
   db-user:
     image: postgres:16-alpine
     container_name: db-user-session
@@ -218,3 +245,11 @@ volumes:
       o: 'bind'
       type: 'none'
       device: '~/goinfre/storage/user-data'
+
+  pung-db-data:
+    name: pung-db-data
+    driver: local
+    driver_opts:
+      o: 'bind'
+      type: 'none'
+      device: '~/goinfre/storage/pung-data'
