@@ -15,7 +15,7 @@ const FeatureList: FeatureItem[] = [
     Icon: '⚙️',
     description: (
       <ul className={styles.list}>
-        <li>🌐 <strong>Linguagens:</strong> Django e .Net</li>
+        <li>🌐 <strong>Linguagens:</strong> Django e Golang</li>
         <li>🐳 <strong>Build:</strong> Docker</li>
         <li>🔧 <strong>Ferramentas:</strong> Git, Make e Github Codespace</li>
       </ul>
