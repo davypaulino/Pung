@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ash
 set -e
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
     CREATE DATABASE "$GAME_CORE_DB";
