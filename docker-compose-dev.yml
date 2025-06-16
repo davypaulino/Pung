@@ -148,18 +148,8 @@ services:
       - "9015"
 
   pung-app:
-    build:
-      context: ./Pung-App/app/
-      dockerfile: ./Dockerfile-prod
-      args:
-        NEXT_PUBLIC_GAME_HOST: "${NEXT_PUBLIC_GAME_HOST}"
-        NEXT_PUBLIC_USER_HOST: "${NEXT_PUBLIC_USER_HOST}"
-        NEXT_PUBLIC_AUTH_HOST: "${NEXT_PUBLIC_AUTH_HOST}"
-        NEXT_PUBLIC_GAME_SOCKET: "${NEXT_PUBLIC_GAME_SOCKET}"
-        NEXT_PUBLIC_USER_SOCKET: "${NEXT_PUBLIC_USER_SOCKET}"
-        NEXT_PUBLIC_AUTH_SOCKET: "${NEXT_PUBLIC_AUTH_SOCKET}"
-        NODE_TLS_REJECT_UNAUTHORIZED: 0
-    image: pung-app:18-alpine
+    image: node:18-alpine
+    command: sh -c "npm install && npm run dev"
     container_name: pung-app
     working_dir: /app
     environment:
@@ -179,6 +169,8 @@ services:
       NEXT_PUBLIC_GAME_SOCKET: "${NEXT_PUBLIC_GAME_SOCKET}"
       NEXT_PUBLIC_USER_SOCKET: "${NEXT_PUBLIC_USER_SOCKET}"
       NEXT_PUBLIC_AUTH_SOCKET: "${NEXT_PUBLIC_AUTH_SOCKET}"
+    volumes:
+      - pung-app-files:/app
     ports:
       - "3001:3000"
     expose:
@@ -255,6 +247,14 @@ services:
     restart: unless-stopped
 
 volumes:
+  pung-app-files:
+    name: pung-app-files
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /mnt/c/me/pung/Pung-App/app
+
   game-core-dev:
     name: game-core-dev
     driver: local
