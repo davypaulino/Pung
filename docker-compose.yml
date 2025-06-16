@@ -4,7 +4,10 @@ secrets:
 
 services:
   pung-db:
-    image: postgres:16-alpine
+    build:
+      context: ./database
+      dockerfile: ./Dockerfile
+    image: pung-database:latest
     container_name: pung-db
     restart: always
     shm_size: 128mb
@@ -28,38 +31,6 @@ services:
     secrets:
       - secrets_env
 
-  user-session-migrate:
-    image: python:3.11
-    container_name: user-session-migrate
-    command: sh -c "pip install -r requirements.txt && python manage.py migrate"
-    working_dir: /app
-    environment:
-      DB_NAME: "${USER_SESSION_DB}"
-      DB_USER: "${POSTGRES_USER}"
-      DB_PASSWORD: "${POSTGRES_PASSWORD}"
-      DB_HOST: "pung-db"
-      DB_PORT: "5432"
-    volumes:
-      - user-session-dev:/app
-    depends_on: 
-      - pung-db
-
-  game-core-migrate:
-    image: python:3.11
-    container_name: game-core-migrate
-    command: sh -c "pip install -r requirements.txt && python manage.py migrate"
-    working_dir: /app
-    environment:
-      DB_NAME: "${GAME_CORE_DB}"
-      DB_USER: "${POSTGRES_USER}"
-      DB_PASSWORD: "${POSTGRES_PASSWORD}"
-      DB_HOST: "pung-db"
-      DB_PORT: "5432"
-    volumes:
-      - game-core-dev:/app
-    depends_on:
-      - pung-db
-
   user-session:
     image: python:3.11
     container_name: user-session
@@ -78,7 +49,6 @@ services:
       JWT_SIGNING_KEY: "${ACCESS_TOKEN_SECRET}"
     depends_on:
       - pung-db
-      - user-session-migrate
       - redis
     expose:
       - '8002'
@@ -100,14 +70,13 @@ services:
       REDIS_PORT: "${REDIS_PORT}"
       JWT_SIGNING_KEY: "${ACCESS_TOKEN_SECRET}"
     depends_on:
-      - pung-db
-      - user-session-migrate
+      - user-session
       - redis
 
   game-core:
     image: python:3.11
     container_name: game-core
-    command: sh -c "pip install -r requirements.txt && uvicorn game_project.asgi:application --host 0.0.0.0 --port 8001 --reload"
+    command: sh -c "pip install -r requirements.txt && python manage.py migrate && uvicorn game_project.asgi:application --host 0.0.0.0 --port 8001 --reload"
     working_dir: /app
     volumes:
       - game-core-dev:/app
@@ -120,7 +89,6 @@ services:
       REDIS_HOST: "${REDIS_HOST}"
       REDIS_PORT: "${REDIS_PORT}"
     depends_on:
-      - game-core-migrate
       - pung-db
       - redis
     expose:
@@ -142,8 +110,7 @@ services:
       REDIS_HOST: "${REDIS_HOST}"
       REDIS_PORT: "${REDIS_PORT}"
     depends_on:
-      - game-core-migrate
-      - pung-db
+      - game-core
       - redis
 
   guardian:
@@ -175,7 +142,6 @@ services:
       DD_ENV: development
       DD_VERSION: 1.0.0
     depends_on:
-      - game-core-migrate
       - pung-db
       - redis
     expose:
@@ -192,11 +158,14 @@ services:
         NEXT_PUBLIC_RESOURCE_WS_USER: "${RESOURCE_WS_USER}"
         NEXT_PUBLIC_RESOURCE_HTTP_AUTH: "${RESOURCE_HTTP_AUTH}"
         NEXT_PUBLIC_RESOURCE_WS_AUTH: "${RESOURCE_WS_AUTH}"
+        NODE_TLS_REJECT_UNAUTHORIZED: 0
     image: pung-app:18-alpine
     container_name: pung-app
     working_dir: /app
     environment:
-      SESSION_SECRET_KEY: "${ACCESS_TOKEN_SECRET}"
+      SESSION_SECRET_KEY: "${SESSION_SECRET}"
+      ACCESS_TOKEN_SECRET: "${ACCESS_TOKEN_SECRET}"
+      REFRESH_TOKEN_SECRET: "${REFRESH_TOKEN_SECRET}"
       NODE_TLS_REJECT_UNAUTHORIZED: 0
       NEXT_PUBLIC_RESOURCE_HTTP_GAME_CORE: "${RESOURCE_HTTP_GAME_CORE}"
       NEXT_PUBLIC_RESOURCE_WS_GAME_CORE: "${RESOURCE_WS_GAME_CORE}"
@@ -217,6 +186,8 @@ services:
     container_name: load-balance
     ports:
       - "8443:443"
+    volumes:
+      - /mnt/c/ssl:/etc/ssl/:ro
     depends_on:
       - pung-app
       - guardian
@@ -273,12 +244,6 @@ services:
       - "8125:8125/udp"
 
     depends_on:
-      - pung-db
-      - user-session
-      - game-core
-      - guardian
-      - redis
-      - pung-app
       - nginx
 
     restart: unless-stopped
@@ -310,8 +275,3 @@ volumes:
 
   pung-db-data:
     name: pung-db-data
-#    driver: local
-#    driver_opts:
-#      o: 'bind'
-#      type: 'none'
-#      device: /mnt/c/me/pung/storage/pung-data
